@@ -15,4 +15,3 @@ Route::prefix('/products')->controller(ProductController::class)->group(function
     Route::get('/show/{id}', 'show');
     Route::get('/form', 'form');
 });
-
