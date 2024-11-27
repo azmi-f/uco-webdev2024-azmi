@@ -16,7 +16,8 @@
         <span class="input-group-text">.00</span>
     </div>
 
-    <button class="btn btn-primary" type="submit" href='products.store'>Submit</button>
-
+    <div >
+        <button class="btn btn-primary" type="submit" href='products.store'>Submit</button>
+    </div>
 
 </x-template>
