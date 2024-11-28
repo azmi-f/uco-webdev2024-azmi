@@ -12,7 +12,7 @@
 
     <div class="input-group mb-3">
         <span class="input-group-text">Price $</span>
-        <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)">
+        <input type="number" class="form-control" aria-label="Amount (to the nearest dollar)">
         <span class="input-group-text">.00</span>
     </div>
 
