@@ -17,7 +17,8 @@
     </div>
 
     <div >
-        <button class="btn btn-primary" type="submit" href='products.store'>Submit</button>
+        <a href='store'><button class="btn btn-primary" type="submit" href='products.store'>Submit</button>
+        </a>
     </div>
 
 </x-template>

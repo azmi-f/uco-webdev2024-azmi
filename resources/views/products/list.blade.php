@@ -1,4 +1,9 @@
 <x-template title="Product List">
+    <div>
+        <a href='create'><button type="button" class="btn btn-primary" href='#'>Add New Product</button>
+        </a>
+    </div>
+
     <div class="row">
         @for ($i = 1; $i <= 20; $i++)
             <div class="col-4">

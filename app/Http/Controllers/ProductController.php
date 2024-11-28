@@ -22,6 +22,14 @@ class ProductController extends Controller
         return view ('products.create');
     }
 
+     /**
+     * Show the form for product list.
+     */
+    public function list()
+    {
+        return view ('products.list');
+    }
+
     /**
      * Store a newly created resource in storage.
      */
