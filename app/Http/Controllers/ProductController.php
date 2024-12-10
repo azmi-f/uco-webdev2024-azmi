@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
 use App\Models\Product;
 use Illuminate\Http\Request;
 
@@ -24,8 +25,10 @@ class ProductController extends Controller
      */
     public function create()
     {
+        $categories = Category::get ();
         return view('products.form', [
-            'title' => 'Add new product'
+            'title' => 'Add new product',
+            'categories' => $categories
         ]);
     }
 
@@ -38,7 +41,8 @@ class ProductController extends Controller
             'name' => $request->name,
             'description' => $request->description,
             'price' => $request->price,
-            'image' => 'storage/products/default.jpg'
+            'image' => 'storage/products/default.jpg',
+            'category_id' => $request->category_id
         ]);
 
         return redirect()->route('products.show', ['id' => $product->id]);
@@ -76,6 +80,7 @@ class ProductController extends Controller
         $product->name = $request->name;
         $product->description = $request->description;
         $product->price = $request->price;
+        $product->category_id = $request->category_id;
         $product->save();
 
         return redirect()->route('products.show', ['id' => $product->id]);
