@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use App\Models\Product;
 use Illuminate\Http\Request;
 
@@ -11,7 +12,11 @@ class ProductController extends Controller
      */
     public function index()
     {
-        return view ('products.index');
+        $products = Product::get();
+
+        return view('products.index', [
+            'products' => $products
+        ]);
     }
 
     /**
@@ -19,15 +24,9 @@ class ProductController extends Controller
      */
     public function create()
     {
-        return view ('products.create');
-    }
-
-     /**
-     * Show the form for product list.
-     */
-    public function list()
-    {
-        return view ('products.list');
+        return view('products.form', [
+            'title' => 'Add new product'
+        ]);
     }
 
     /**
@@ -35,14 +34,14 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        Product::create([
+        $product = Product::create([
             'name' => $request->name,
             'description' => $request->description,
             'price' => $request->price,
-            'image' => ''
+            'image' => 'storage/products/default.jpg'
         ]);
 
-        return redirect()->route('product.list');
+        return redirect()->route('products.show', ['id' => $product->id]);
     }
 
     /**
@@ -50,7 +49,10 @@ class ProductController extends Controller
      */
     public function show(string $id)
     {
-        return $id;
+        $product = Product::where('id', $id)->firstOrFail();
+        return view('products.show', [
+            'product' => $product
+        ]);
     }
 
     /**
@@ -58,23 +60,25 @@ class ProductController extends Controller
      */
     public function edit(string $id)
     {
-        return $id;
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function form()
-    {
-        return view ('products.form');
+        $product = Product::where('id', $id)->firstOrFail();
+        return view('products.form', [
+            'title' => 'Edit product',
+            'product' => $product
+        ]);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(string $id)
+    public function update(Request $request, string $id)
     {
-        return $id;
+        $product = Product::where('id', $id)->firstOrFail();
+        $product->name = $request->name;
+        $product->description = $request->description;
+        $product->price = $request->price;
+        $product->save();
+
+        return redirect()->route('products.show', ['id' => $product->id]);
     }
 
     /**
@@ -82,6 +86,9 @@ class ProductController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $product = Product::where('id', $id)->firstOrFail();
+        $product->delete();
+
+        return redirect()->route('products.list');
     }
 }

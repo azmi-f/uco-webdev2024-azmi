@@ -1,24 +1,23 @@
-<x-template title="Form">
-    <div class="input-group mb-3">
-        <span class="input-group-text" id="basic-addon1">name</span>
-        <input type="text" class="form-control" placeholder="Username" aria-label="Username"
-            aria-describedby="basic-addon1">
+<x-template title="Add new product">
+    <div class="container py-3">
+        <h1>{{ $title }}</h1>
+        <form class="was-validated" method="post" action="{{ isset($product->id) ? route('products.update', ['id' => $product->id]) : route('products.store') }}">
+            @csrf
+            <div class="mb-3">
+                <label for="name" class="form-label">Name</label>
+                <input type="text" class="form-control" name="name" id="name" value="{{ $product->name ?? '' }}" required>
+              </div>
+              <div class="mb-3">
+                <label for="description" class="form-label">Description</label>
+                <textarea class="form-control" name="description" id="description">{{ $product->description ?? '' }}</textarea>
+              </div>
+              <div class="mb-3">
+                <label for="price" class="form-label">Price</label>
+                <input type="number" class="form-control" name="price" id="price" value="{{ $product->price ?? 0 }}" min="1" required>
+              </div>
+              <div class="mb-3">
+                <button type="submit" class="btn btn-primary">Submit</button>
+              </div>
+        </form>
     </div>
-
-    <div class="input-group">
-        <span class="input-group-text">Description</span>
-        <textarea class="form-control" aria-label="With textarea"></textarea>
-    </div>
-
-    <div class="input-group mb-3">
-        <span class="input-group-text">Price $</span>
-        <input type="number" class="form-control" aria-label="Amount (to the nearest dollar)">
-        <span class="input-group-text">.00</span>
-    </div>
-
-    <div >
-        <a href='store'><button class="btn btn-primary" type="submit" href='products.store'>Submit</button>
-        </a>
-    </div>
-
 </x-template>
