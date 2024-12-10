@@ -24,6 +24,21 @@
                     <input class="form-control" type="search" placeholder="Search" aria-label="Search">
                     <button class="btn btn-light border" type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
                 </form>
+                <form class="input-group" method="GET" action="{{ route('products.list') }}">
+                    <select class="form-select" name="category">
+                        <option value="">All Categories</option>
+                        @foreach(\App\Models\Category::get() as $category)
+                            <option value="{{ $category->id }}" {{ request('category') == $category->id ? 'selected' : '' }}>
+                                {{ $category->name }}
+                            </option>
+                        @endforeach
+                    </select>
+
+                    <input class="form-control" type="number" name="min_price" placeholder="Min Price" value="{{ request('min_price') }}">
+                    <input class="form-control" type="number" name="max_price" placeholder="Max Price" value="{{ request('max_price') }}">
+
+                    <button class="btn btn-light border" type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
+                </form>
 
 
                 <button class="btn btn-white border navbar-toggler" type="button" data-bs-toggle="collapse"
