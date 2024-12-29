@@ -43,7 +43,7 @@
             </div>
             <div class="mb-3">
                 <label for="price" class="form-label">Price</label>
-                <input type="number" class="form-control" name="price" id="price" value="{{ $product->price ?? old('price') ?? 0 }}" min="1" required>
+                <input type="number" class="form-control" name="price" id="price" min="5000" max="5000000" value="{{ $product->price ?? old('price') ?? 0 }}" min="1" required>
                 @if($errors->has('price'))
                     <div class="text-danger">
                         {{ $errors->first('price') }}
