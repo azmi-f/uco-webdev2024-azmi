@@ -20,6 +20,10 @@
             </a>
 
             <div class="d-flex gap-2 py-2">
+                <form action="{{ '/' }}">
+                    <button class="btn btn-light border" type="submit"><i class="fa-solid fa-house"></i></button>
+                </form>
+
                 <form class="input-group" role="search" action="{{ route('products.list') }}">
                     <input class="form-control" type="search" placeholder="Search" aria-label="Search" name="search">
                     <button class="btn btn-light border" type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>

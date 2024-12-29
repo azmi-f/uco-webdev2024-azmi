@@ -60,7 +60,7 @@ class ProductController extends Controller
 
         // $products = $products->get();
 
-        $products = $products->paginate(12)->withQueryString();
+        $products = $products->paginate(8)->withQueryString();
 
         return view('products.index', [
             'products' => $products,
