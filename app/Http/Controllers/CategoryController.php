@@ -12,7 +12,11 @@ class CategoryController extends Controller
      */
     public function index()
     {
+<<<<<<< HEAD
         $categories = Category::get();
+=======
+        $categories = Category::getOrdered();
+>>>>>>> sesi-3
 
         return view('categories.index', [
             'categories' => $categories

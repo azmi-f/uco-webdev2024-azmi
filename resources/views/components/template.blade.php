@@ -22,6 +22,7 @@
             <div class="d-flex gap-2 py-2">
                 <form action="{{ '/' }}">
                     <button class="btn btn-light border" type="submit"><i class="fa-solid fa-house"></i></button>
+<<<<<<< HEAD
                 </form>
 
                 <form class="input-group" role="search" action="{{ route('products.list') }}">
@@ -29,15 +30,45 @@
                     <button class="btn btn-light border" type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
                 </form>
 
+=======
+                </form>
+                <form class="input-group" role="search" action="{{ route('products.list') }}">
+                    <input class="form-control" type="search" placeholder="Search" aria-label="Search" name="search">
+                    <button class="btn btn-light border" type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
+                </form>
+
+>>>>>>> sesi-3
                 <button class="btn btn-white border navbar-toggler" type="button" data-bs-toggle="collapse"
                     data-bs-target="#navbarCategories" aria-controls="navbarCategories" aria-expanded="false"
                     aria-label="Toggle navigation">
                     <i class="fa-solid fa-bars"></i>
                 </button>
 
-                <a href="" class="btn btn-white border">
-                    <i class="fa-solid fa-cart-shopping"></i>
-                </a>
+                @auth
+                    <a href="{{ route('cart.list') }}" class="btn btn-white border">
+                        <i class="fa-solid fa-cart-shopping"></i>
+                    </a>
+                    <div class="dropdown">
+                        <a class="btn dropdown-toggle border" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            {{ auth()->user()->name }}
+                        </a>
+
+                        <ul class="dropdown-menu dropdown-menu-end">
+                            <li><a class="dropdown-item" href="#">Profile</a></li>
+                            <li><a class="dropdown-item" href="#">Purchase history</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li>
+                                <form action="{{ route('logout') }}" method="POST">
+                                    @csrf
+                                    <button type="submit" class="dropdown-item text-danger">Log out</button>
+                                </form>
+                            </li>
+                        </ul>
+                    </div>
+                @else
+                    <a href="{{ route('login') }}" class="btn btn-primary text-nowrap">Login</a>
+                @endauth
+
             </div>
         </div>
 
@@ -47,7 +78,12 @@
                 <li class="nav-item">
                     <a class="nav-link" aria-current="page" href="{{ route('products.list') }}">All products</a>
                 </li>
+<<<<<<< HEAD
                 @foreach(\App\Models\Category::get() as $category)
+=======
+
+                @foreach(\App\Models\Category::getOrdered() as $category)
+>>>>>>> sesi-3
                 <li class="nav-item">
                     <a class="nav-link" aria-current="page" href="{{ route('products.list', ['category' => $category->id]) }}">{{ $category->name }}</a>
                 </li>
@@ -56,7 +92,6 @@
         </div>
     </nav>
     {{ $slot }}
-
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous">
