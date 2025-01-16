@@ -41,6 +41,9 @@
                     <a href="{{ route('cart.list') }}" class="btn btn-white border">
                         <i class="fa-solid fa-cart-shopping"></i>
                     </a>
+                    <a href="{{ route('favourite.list') }}" class="btn btn-white border">
+                        <i class="fa-solid fa-heart"></i>
+                    </a>
                     <div class="dropdown">
                         <a class="btn dropdown-toggle border" href="#" role="button" data-bs-toggle="dropdown"
                             aria-expanded="false">
@@ -48,7 +51,7 @@
                         </a>
 
                         <ul class="dropdown-menu dropdown-menu-end">
-                            <li><a class="dropdown-item" href="#">Profile</a></li>
+                            <li><a class="dropdown-item" href="{{ route('my-profile') }}">Profile</a></li>
                             <li><a class="dropdown-item" href="{{ route('purchase-history') }}">Purchase history</a></li>
                             <li>
                                 <hr class="dropdown-divider">

@@ -31,7 +31,9 @@
                     @endphp
                     @foreach ($cartItems as $cart)
                         @php
-                            $total += $cart->product->price * $cart->quantity;
+                            $total +=
+                                $cart->product->price * $cart->quantity -
+                                ($cart->product->price * $cart->product->discount) / 100;
                         @endphp
                         <tr>
                             <th>
@@ -45,7 +47,10 @@
                                     <img class="w-25" src="{{ asset($cart->product->image) }}">
                                     <div class="ms-3">
                                         <div>{{ $cart->product->name }}</div>
-                                        <div>Rp {{ number_format($cart->product->price, 2, ',', '.') }}</div>
+                                        <div><strike>Rp {{ number_format($cart->product->price, 2, ',', '.') }}</strike>
+                                            => Rp
+                                            {{ number_format($cart->product->price - ($cart->product->price * $cart->product->discount) / 100, 2, ',', '.') }}
+                                        </div>
                                     </div>
                                 </div>
                             </td>
@@ -65,7 +70,9 @@
                                 </div>
                             </td>
                             <td>
-                                Rp {{ number_format($cart->product->price * $cart->quantity, 2, ',', '.') }}
+                                <strike>Rp {{ number_format($cart->product->price, 2, ',', '.') }}</strike>
+                                => Rp
+                                {{ number_format($cart->product->price - ($cart->product->price * $cart->product->discount) / 100, 2, ',', '.') }}
                             </td>
                         </tr>
                     @endforeach

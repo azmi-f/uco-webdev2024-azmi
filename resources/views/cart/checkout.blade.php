@@ -18,12 +18,15 @@
                     @endphp
                     @foreach ($cartItems as $item)
                         @php
-                            $total += $item->product->price * $item->quantity;
+                            $total +=
+                                $item->product->price * $item->quantity -
+                                ($item->product->price * $item->product->discount) / 100;
                         @endphp
                         <tr>
                             <td>{{ $item->product->name }}</td>
                             <td>{{ $item->quantity }}</td>
-                            <td>Rp{{ number_format($item->product->price * $item->quantity, 0, '.', '.') }}</td>
+                            <td>Rp{{ number_format($item->product->price * $item->quantity - ($item->product->price * $item->product->discount) / 100, 0, '.', '.') }}
+                            </td>
                         </tr>
                     @endforeach
                 </tbody>

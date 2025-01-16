@@ -14,10 +14,23 @@
             <div class="container px-lg-5 py-5">
                 <div class="text-muted mb-5 fst-italic">{{ $product->category->name }}</div>
                 <h1 class="mb-4">{{ $product->name }}</h1>
-                <div class="fw-semibold text-danger mb-4">
-                    Rp {{ number_format($product->price, 2, ',', '.') }}
+                <div class="fw-semibold mb-4">
+                    @if ($product->discount)
+                        @php
+                            $potongan_discount = ($product->price * $product->discount) / 100;
+                        @endphp
+                        <span class="text-danger">
+                            <strike>Rp {{ number_format($product->price, 2, '.', '.') }}</strike>
+                        </span>
+                        =>
+                        <span class="text-danger">
+                            Rp {{ number_format($product->price - $potongan_discount, 2, '.', '.') }}
+                        </span>
+                    @else
+                        Rp {{ number_format($product->price, 2, '.', '.') }}
+                    @endif
                 </div>
-                <form method="POST" action="{{ route('cart.add-to-cart') }}" class="mb-4">
+                <form method="POST" action="{{ route('cart.add-to-cart') }}">
                     @csrf
                     <input type="hidden" name="product_id" value="{{ $product->id }}">
                     <div class="input-group mb-3">
@@ -28,6 +41,23 @@
                         Add to cart
                     </button>
                 </form>
+                @if ($product->favouriteItem)
+                    <form method="POST" action="{{ route('favourite.destroy', $product->id) }}" class="mb-4">
+                        @csrf
+                        <input type="hidden" name="product_id" value="{{ $product->id }}">
+                        <button type="submit" class="btn btn-danger text-white w-100">
+                            Remove to favourite
+                        </button>
+                    </form>
+                @else
+                    <form method="POST" action="{{ route('favourite.add-to-favourite') }}" class="mb-4">
+                        @csrf
+                        <input type="hidden" name="product_id" value="{{ $product->id }}">
+                        <button type="submit" class="btn btn-warning text-white w-100">
+                            Add to favourite
+                        </button>
+                    </form>
+                @endif
                 <p>
                 <div class="fst-italic text-muted">Description:</div>
                 {{ $product->description }}

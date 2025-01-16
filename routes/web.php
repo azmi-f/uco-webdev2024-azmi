@@ -2,10 +2,14 @@
 
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\DiscountController;
+use App\Http\Controllers\FavouriteController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RegistrationController;
+use App\Http\Controllers\UserController;
 use App\Http\Middleware\EnsureProductIdValid;
 use Illuminate\Support\Facades\Route;
 
@@ -54,4 +58,31 @@ Route::prefix('/cart')->controller(CartController::class)->middleware('auth')->g
     Route::post('/checkout', 'processCheckout')->name('cart.processCheckout');
 });
 
+Route::get('/my-profile', [ProfileController::class, 'index'])->middleware('auth')->name('my-profile');
+Route::post('/my-profile', [ProfileController::class, 'update'])->middleware('auth')->name('my-profile.update');
+
+Route::prefix('/favourite')->controller(FavouriteController::class)->middleware('auth')->group(function () {
+    Route::get('/', 'index')->name('favourite.list');
+    Route::post('/add-to-favourite', 'addToFavourite')->name('favourite.add-to-favourite');
+    Route::post('/remove-from-favourite/{id}', 'removeFromFavourite')->name('favourite.destroy');
+});
+
 Route::get('/purchase-history', [CartController::class, 'purchaseHistory'])->middleware('auth')->name('purchase-history');
+
+Route::prefix('/discount')->controller(DiscountController::class)->middleware('auth', 'can:is-admin')->group(function () {
+    Route::get('/', 'index')->name('discount.list');
+    Route::get('/create', 'create')->name('discount.create');
+    Route::post('/store', 'store')->name('discount.store');
+    Route::get('/edit/{id}', 'edit')->name('discount.edit');
+    Route::post('/update/{id}', 'update')->name('discount.update');
+    Route::post('/destroy/{id}', 'destroy')->name('discount.destroy');
+});
+
+Route::prefix('/user')->controller(UserController::class)->middleware('auth', 'can:is-admin')->group(function () {
+    Route::get('/', 'index')->name('user.list');
+    Route::get('/create', 'create')->name('user.create');
+    Route::post('/store', 'store')->name('user.store');
+    Route::get('/edit/{id}', 'edit')->name('user.edit');
+    Route::post('/update/{id}', 'update')->name('user.update');
+    Route::post('/destroy/{id}', 'destroy')->name('user.destroy');
+});
