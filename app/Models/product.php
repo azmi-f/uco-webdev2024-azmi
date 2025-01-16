@@ -8,7 +8,11 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\relation\BelongsTo;
 =======
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+<<<<<<< HEAD
 >>>>>>> sesi-3
+=======
+use Illuminate\Database\Eloquent\Relations\HasMany;
+>>>>>>> ALP
 
 class Product extends Model
 {
@@ -28,5 +32,15 @@ class Product extends Model
     public function category(): BelongsTo
     {
         return $this->belongsTo(Category::class);
+    }
+
+    public function cartItems(): HasMany
+    {
+        return $this->hasMany(CartItem::class);
+    }
+
+    public function orderItems(): HasMany
+    {
+        return $this->hasMany(OrderItem::class);
     }
 }
