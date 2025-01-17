@@ -18,14 +18,21 @@
                     @endphp
                     @foreach ($cartItems as $item)
                         @php
-                            $total +=
-                                $item->product->price * $item->quantity -
-                                ($item->product->price * $item->product->discount) / 100;
+                            if ($item->product->discount && $item->product->discount != 0) {
+                                $subtotal = $item->product->price;
+                                $total += $subtotal;
+                            } else {
+                                $subtotal =
+                                    $item->product->price * $item->quantity -
+                                    ($item->product->price * $item->product->discount) / 100;
+                                $total += $subtotal;
+                            }
                         @endphp
                         <tr>
                             <td>{{ $item->product->name }}</td>
                             <td>{{ $item->quantity }}</td>
-                            <td>Rp{{ number_format($item->product->price * $item->quantity - ($item->product->price * $item->product->discount) / 100, 0, '.', '.') }}
+                            <td>
+                                Rp{{ number_format($subtotal, 2, ',', '.') }}
                             </td>
                         </tr>
                     @endforeach

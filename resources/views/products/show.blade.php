@@ -15,7 +15,7 @@
                 <div class="text-muted mb-5 fst-italic">{{ $product->category->name }}</div>
                 <h1 class="mb-4">{{ $product->name }}</h1>
                 <div class="fw-semibold mb-4">
-                    @if ($product->discount)
+                    @if ($product->discount && $product->discount != 0)
                         @php
                             $potongan_discount = ($product->price * $product->discount) / 100;
                         @endphp

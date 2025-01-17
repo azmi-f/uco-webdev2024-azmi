@@ -31,9 +31,15 @@
                     @endphp
                     @foreach ($cartItems as $cart)
                         @php
-                            $total +=
-                                $cart->product->price * $cart->quantity -
-                                ($cart->product->price * $cart->product->discount) / 100;
+                            if ($cart->product->discount && $cart->product->discount != 0) {
+                                $subtotal = $cart->product->price;
+                                $total += $subtotal;
+                            } else {
+                                $subtotal =
+                                    $cart->product->price * $cart->quantity -
+                                    ($cart->product->price * $cart->product->discount) / 100;
+                                $total += $subtotal;
+                            }
                         @endphp
                         <tr>
                             <th>
@@ -47,9 +53,15 @@
                                     <img class="w-25" src="{{ asset($cart->product->image) }}">
                                     <div class="ms-3">
                                         <div>{{ $cart->product->name }}</div>
-                                        <div><strike>Rp {{ number_format($cart->product->price, 2, ',', '.') }}</strike>
-                                            => Rp
-                                            {{ number_format($cart->product->price - ($cart->product->price * $cart->product->discount) / 100, 2, ',', '.') }}
+                                        <div>
+                                            @if ($cart->product->discount && $cart->product->discount != 0)
+                                                Rp {{ number_format($subtotal, 2, ',', '.') }}
+                                            @else
+                                                <strike>Rp
+                                                    {{ number_format($subtotal, 2, ',', '.') }}</strike>
+                                                => Rp
+                                                {{ number_format($subtotal, 2, ',', '.') }}
+                                            @endif
                                         </div>
                                     </div>
                                 </div>
@@ -70,9 +82,13 @@
                                 </div>
                             </td>
                             <td>
-                                <strike>Rp {{ number_format($cart->product->price, 2, ',', '.') }}</strike>
-                                => Rp
-                                {{ number_format($cart->product->price - ($cart->product->price * $cart->product->discount) / 100, 2, ',', '.') }}
+                                @if ($cart->product->discount && $cart->product->discount != 0)
+                                    Rp {{ number_format($cart->product->price, 2, ',', '.') }}
+                                @else
+                                    <strike>Rp {{ number_format($cart->product->price, 2, ',', '.') }}</strike>
+                                    => Rp
+                                    {{ number_format($cart->product->price - ($cart->product->price * $cart->product->discount) / 100, 2, ',', '.') }}
+                                @endif
                             </td>
                         </tr>
                     @endforeach

@@ -68,7 +68,6 @@ class CartController extends Controller
 
     function processCheckout(Request $request)
     {
-        dd($request);
         $order = Order::create([
             'user_id' => auth()->id(),
             'shipping_address' => $request->shipping_address,
