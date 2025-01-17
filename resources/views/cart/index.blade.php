@@ -32,13 +32,10 @@
                     @foreach ($cartItems as $cart)
                         @php
                             if ($cart->product->discount && $cart->product->discount != 0) {
-                                $subtotal = $cart->product->price;
-                                $total += $subtotal;
-                            } else {
                                 $subtotal =
-                                    $cart->product->price * $cart->quantity -
-                                    ($cart->product->price * $cart->product->discount) / 100;
-                                $total += $subtotal;
+                                    $cart->product->price - ($cart->product->price * $cart->product->discount) / 100;
+                            } else {
+                                $subtotal = $cart->product->price;
                             }
                         @endphp
                         <tr>
@@ -55,12 +52,12 @@
                                         <div>{{ $cart->product->name }}</div>
                                         <div>
                                             @if ($cart->product->discount && $cart->product->discount != 0)
-                                                Rp {{ number_format($subtotal, 2, ',', '.') }}
-                                            @else
                                                 <strike>Rp
-                                                    {{ number_format($subtotal, 2, ',', '.') }}</strike>
+                                                    {{ number_format($cart->product->price, 2, ',', '.') }}</strike>
                                                 => Rp
                                                 {{ number_format($subtotal, 2, ',', '.') }}
+                                            @else
+                                                Rp {{ number_format($cart->product->price, 2, ',', '.') }}
                                             @endif
                                         </div>
                                     </div>
@@ -82,13 +79,11 @@
                                 </div>
                             </td>
                             <td>
-                                @if ($cart->product->discount && $cart->product->discount != 0)
-                                    Rp {{ number_format($cart->product->price, 2, ',', '.') }}
-                                @else
-                                    <strike>Rp {{ number_format($cart->product->price, 2, ',', '.') }}</strike>
-                                    => Rp
-                                    {{ number_format($cart->product->price - ($cart->product->price * $cart->product->discount) / 100, 2, ',', '.') }}
-                                @endif
+                                @php
+                                    $total_potongan = $subtotal * $cart->quantity;
+                                    $total += $total_potongan;
+                                @endphp
+                                Rp {{ number_format($total_potongan, 2, ',', '.') }}
                             </td>
                         </tr>
                     @endforeach
