@@ -38,8 +38,20 @@
         </table>
     </div>
 
-    <a href="{{ route('user.create') }}" class="btn btn-lg btn-success position-fixed bottom-0 end-0 m-3"
-        title="Add new user" data-bs-toggle="tooltip">
-        <i class="fa-solid fa-plus"></i>
-    </a>
+    @if (auth()->user() && auth()->user()->is_admin == 1)
+        <div class="position-fixed bottom-0 end-0 m-3">
+            <a href="{{ route('discount.list') }}" class="btn btn-lg btn-success" title="List Discount"
+                data-bs-toggle="tooltip">
+                <i class="fa-solid fa-percent"></i>
+            </a>
+            <a href="{{ route('products.create') }}" class="btn btn-lg btn-success" title="Add new product"
+                data-bs-toggle="tooltip">
+                <i class="fa-solid fa-plus"></i>
+            </a>
+            <a href="{{ route('user.list') }}" class="btn btn-lg btn-success" title="List User"
+                data-bs-toggle="tooltip">
+                <i class="fa-solid fa-user"></i>
+            </a>
+        </div>
+    @endif
 </x-template>
