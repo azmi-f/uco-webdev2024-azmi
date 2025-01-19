@@ -10,6 +10,8 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RegistrationController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\PasifController;
+use App\Http\Controllers\NewsletterController;
 use App\Http\Middleware\EnsureProductIdValid;
 use Illuminate\Support\Facades\Route;
 
@@ -86,3 +88,10 @@ Route::prefix('/user')->controller(UserController::class)->middleware('auth', 'c
     Route::post('/update/{id}', 'update')->name('user.update');
     Route::post('/destroy/{id}', 'destroy')->name('user.destroy');
 });
+
+Route::prefix('/pasif')->controller(PasifController::class)->middleware('auth', 'can:is-admin')->group(function () {
+    Route::get('/about', 'about')->name('pasif.about');
+    Route::get('/term', 'term')->name('pasif.term');
+});
+
+Route::post('/newsletter/send_email', [NewsletterController::class, 'send_email'])->name('newsletter.send_email');

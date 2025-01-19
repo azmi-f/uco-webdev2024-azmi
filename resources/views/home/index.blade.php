@@ -4,6 +4,16 @@
             alt="Olahraga" class="img-fluid mt-3">
         <h1>Hallo, Selamat datang !!!</h1>
     </div>
+    <div class="p-5">
+        <h1 class="text-uppercase fst-italic text-center mb-5">NEW ARRIVALS</h1>
+        <div class="row">
+            @foreach($newArrival as $product)
+            <div class="col-6 col-lg-3 mb-4">
+                <x-product-display :product="$product"></x-product-display>
+            </div>
+            @endforeach
+        </div>
+    </div>
     <nav class="navbar navbar-expand-lg bg-body-tertiary">
         <div class="container-fluid">
             <a class="navbar-brand" href="#">Toko Olahraga</a>
@@ -15,10 +25,10 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="#">about us</a>
+                        <a class="nav-link active" aria-current="page" href="{{ route('pasif.about') }}">about us</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Testimoni</a>
+                        <a class="nav-link" href="{{ route('pasif.term') }}">Term Condition</a>
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
@@ -35,12 +45,17 @@
                         </ul>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link disabled" aria-disabled="true">alamat</a>
+                        <a class="nav-link disabled" aria-disabled="true">Bantuan</a>
                     </li>
                 </ul>
-                <form class="d-flex" role="search">
-                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                    <button class="btn btn-outline-success" type="submit">Butuh apa?</button>
+            </div>
+            <div class="col-lg-6">
+                <form method="post" action="{{ route('newsletter.send_email') }}">
+                    @csrf
+                    <input type="email" name="email" class="form-control form-control-lg mb-3" placeholder="Email" required>
+                    <div class="text-end">
+                        <button type="submit" class="btn btn-primary btn-lg">Subscribe</button>
+                    </div>
                 </form>
             </div>
         </div>
