@@ -37,7 +37,10 @@
                         <span class="input-group-text">Qty.</span>
                         <input type="number" value="1" name="quantity" class="form-control" placeholder="Qty">
                     </div>
-                    <button type="submit" class="mb-3 btn btn-success w-100">
+                    <button type="submit" name="action" value="buy_now" class="mb-3 btn btn-secondary w-100">
+                        Buy Now
+                    </button>
+                    <button type="submit" name="action" value="add_to_cart" class="mb-3 btn btn-success w-100">
                         Add to cart
                     </button>
                 </form>
