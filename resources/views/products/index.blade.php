@@ -1,4 +1,10 @@
 <x-template title="Daftar produk">
+    @if (session('success'))
+        <div class="alert alert-success alert-dismissible fade show rounded-0 mb-0" role="alert">
+            {{ session('success') }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    @endif
     <div class="container py-3">
         <h1 class="text-uppercase fst-italic mb-4">
             @if (!empty($searchQueries))

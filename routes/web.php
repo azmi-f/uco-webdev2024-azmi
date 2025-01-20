@@ -58,6 +58,7 @@ Route::prefix('/cart')->controller(CartController::class)->middleware('auth')->g
     Route::post('/update-quantity/{id}', 'updateQuantity')->name('cart.update');
     Route::get('/checkout', 'checkout')->name('cart.checkout');
     Route::post('/checkout', 'processCheckout')->name('cart.processCheckout');
+    Route::post('/buy-now', 'processBuyNow')->name('cart.processBuyNow');
 });
 
 Route::get('/my-profile', [ProfileController::class, 'index'])->middleware('auth')->name('my-profile');
