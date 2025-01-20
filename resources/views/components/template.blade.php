@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-bs-theme="">
+
 
 <head>
     <meta charset="UTF-8">
@@ -11,11 +12,12 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css"
         integrity="sha512-5Hs3dF2AEPkpNAR7UiOHba+lRSJNeM2ECkwxUIxC1Q/FLycGTbNapWXB4tP889k5T5Ju8fs4b1P5z/iB4nMfSQ=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
 </head>
 
 <body>
-    <nav class="navbar py-0 navbar-expand-lg d-block">
+    <nav class="navbar py-0 navbar-expand-lg d-block" style="background-color: var(--bs-body-bg);">
         <div class="d-flex container-fluid">
             <a class="navbar-brand" href="/">
                 <img src="{{ asset('img/logo.png') }}" style="height:50px">
@@ -44,6 +46,31 @@
                     <a href="{{ route('favourite.list') }}" class="btn btn-white border">
                         <i class="fa-solid fa-heart"></i>
                     </a>
+                    <div class="nav-item dropdown">
+                        <button class="btn nav-link dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <i class="bi bi-sun-fill theme-icon-active" data-theme-icon-active="bi bi-sun-fill"></i>
+                        </button>
+                        <ul class="dropdown-menu dropdown-menu-end">
+                            <li>
+                                <button class="dropdown-item d-flex align-items-center" type="button" data-bs-theme-value="light">
+                                <i class="bi bi-sun-fill me-2 opacity=50" data-theme-icon="bi-sun-fill"></i>
+                                light
+                                </button>
+                            </li>
+                            <li>
+                                <button class="dropdown-item d-flex align-items-center" type="button" data-bs-theme-value="dark">
+                                <i class="bi bi-moon-fill me-2 opacity=50" data-theme-icon="bi-moon-fill"></i>
+                                dark
+                                </button>
+                            </li>
+                            <li>
+                                <button class="dropdown-item d-flex align-items-center" type="button" data-bs-theme-value="auto">
+                                    <i class="bi bi-circle-half me-2 opacity=50" data-theme-icon="bi-circle-half"></i>
+                                    auto
+                                </button>
+                            </li>
+                        </ul>
+                    </div>
                     <div class="dropdown">
                         <a class="btn dropdown-toggle border" href="#" role="button" data-bs-toggle="dropdown"
                             aria-expanded="false">

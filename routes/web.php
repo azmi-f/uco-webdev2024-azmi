@@ -89,9 +89,10 @@ Route::prefix('/user')->controller(UserController::class)->middleware('auth', 'c
     Route::post('/destroy/{id}', 'destroy')->name('user.destroy');
 });
 
-Route::prefix('/pasif')->controller(PasifController::class)->middleware('auth', 'can:is-admin')->group(function () {
+Route::prefix('/pasif')->controller(PasifController::class)->middleware('auth')->group(function () {
     Route::get('/about', 'about')->name('pasif.about');
     Route::get('/term', 'term')->name('pasif.term');
+    Route::get('/privacy', 'privacy')->name('pasif.privacy');
 });
 
 Route::post('/newsletter/send_email', [NewsletterController::class, 'send_email'])->name('newsletter.send_email');

@@ -1,26 +1,171 @@
-<x-template title="term">
-<div>
-    Syarat dan Ketentuan
-Selamat datang di Toko Olahraga!
-<br> Dengan mengakses dan menggunakan situs web kami, Anda dianggap telah membaca, memahami, dan menyetujui syarat dan ketentuan berikut: <br>
-<ul> 1. Penggunaan Situs Web</ul>
- •	Situs ini ditujukan untuk memfasilitasi pembelian perlengkapan olahraga. Pengguna diwajibkan menggunakan situs ini secara legal dan tidak melakukan tindakan yang melanggar hukum. </il>
-•	Informasi yang diberikan di situs ini, termasuk harga dan stok produk, dapat berubah sewaktu-waktu tanpa pemberitahuan.
-<ul> 2. Akun Pengguna </ul>
-•	Anda bertanggung jawab untuk menjaga kerahasiaan akun Anda dan semua aktivitas yang dilakukan melalui akun tersebut.
-•	Harap segera hubungi kami jika Anda mencurigai adanya pelanggaran keamanan atau penyalahgunaan akun Anda.
-<ul>3. Pembelian dan Pembayaran</ul>
-•	Semua pembelian yang dilakukan melalui situs ini tunduk pada ketersediaan produk.
-•	Pembayaran dilakukan melalui metode yang tersedia di situs kami. Pastikan semua informasi yang Anda masukkan saat pembayaran adalah benar dan valid.
-<ul> 4. Pengiriman dan Pengembalian </ul>
-•	Kami berusaha mengirimkan pesanan Anda tepat waktu sesuai estimasi. Namun, kami tidak bertanggung jawab atas keterlambatan pengiriman yang disebabkan oleh pihak ketiga.
-•	Kebijakan pengembalian dan penukaran produk berlaku sesuai dengan ketentuan yang ditetapkan di halaman Kebijakan Pengembalian.
-<ul> 5. Hak Kekayaan Intelektual </ul>
-•	Semua konten di situs ini, termasuk teks, gambar, logo, dan desain, adalah milik [Nama Toko Anda] dan dilindungi oleh hukum hak cipta. Penggunaan tanpa izin tertulis dilarang.
-<ul> 6. Batasan Tanggung Jawab </ul>•	Kami tidak bertanggung jawab atas kerugian langsung atau tidak langsung yang timbul dari penggunaan situs ini, termasuk kerusakan perangkat, kehilangan data, atau pelanggaran privasi.
-<ul> 7.Perubahan Syarat dan Ketentuan</ul>
-•	Kami berhak untuk mengubah syarat dan ketentuan ini sewaktu-waktu. Pengguna diharapkan memeriksa halaman ini secara berkala untuk mengetahui pembaruan.
-<ul> 8. Kontak Kami</ul>
-Jika Anda memiliki pertanyaan atau memerlukan bantuan, silakan hubungi kami melalui email [email@tokoanda.com] atau nomor telepon [+62 xxx-xxx-xxxx].
-</div>
+<x-template title="Term Condition">
+    <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Syarat dan Ketentuan</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Poppins', Arial, sans-serif;
+            line-height: 1.8;
+            background: linear-gradient(to bottom, #f9f9f9, #eef2f3);
+            color: #444;
+            margin: 0;
+        }
+        .header {
+            background: linear-gradient(135deg, #007bff, #0056b3);
+            color: white;
+            padding: 60px 20px;
+            text-align: center;
+            border-radius: 0 0 15px 15px;
+        }
+        .header h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+        .header p {
+            font-size: 1.2rem;
+        }
+        .content-section {
+            padding: 40px;
+            background: #fff;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            border-radius: 15px;
+            margin-bottom: 40px;
+            transition: transform 0.3s ease;
+        }
+        .content-section:hover {
+            transform: translateY(-5px);
+        }
+        .content-section h2 {
+            color: #0056b3;
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+        .content-section ol {
+            padding-left: 25px;
+        }
+        .content-section ol li {
+            margin-bottom: 15px;
+        }
+        .content-section ol li ul {
+            list-style-type: disc;
+            padding-left: 25px;
+        }
+        .table {
+            background: #fff;
+            border: 1px solid #dee2e6;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            border-radius: 5px;
+            overflow: hidden;
+        }
+        .table th {
+            background-color: #007bff;
+            color: white;
+            text-align: center;
+        }
+        .table td {
+            text-align: center;
+            padding: 15px;
+        }
+        footer {
+            text-align: center;
+            padding: 20px;
+            background: #f8f9fa;
+            border-top: 1px solid #e9ecef;
+        }
+        footer p {
+            margin: 0;
+            color: #666;
+        }
+        footer a {
+            color: #007bff;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        footer a:hover {
+            color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>Syarat dan Ketentuan</h1>
+        <p>Selamat datang di Toko Olahraga! Harap baca syarat dan ketentuan berikut dengan seksama.</p>
+    </div>
+
+    <div class="container mt-5">
+        <div class="content-section">
+            <h2 class="text-center">Ketentuan Umum</h2>
+            <p>Dengan mengakses situs ini, Anda dianggap telah menyetujui semua syarat dan ketentuan berikut:</p>
+            <ol>
+                <li><strong>Penggunaan Situs Web</strong>
+                    <ul>
+                        <li>Situs ini hanya untuk tujuan transaksi legal.</li>
+                        <li>Informasi yang ditampilkan dapat berubah sewaktu-waktu tanpa pemberitahuan.</li>
+                    </ul>
+                </li>
+                <li><strong>Akun Pengguna</strong>
+                    <ul>
+                        <li>Anda bertanggung jawab atas keamanan akun Anda.</li>
+                        <li>Segera laporkan jika ada aktivitas mencurigakan.</li>
+                    </ul>
+                </li>
+                <li><strong>Pembelian dan Pembayaran</strong>
+                    <ul>
+                        <li>Pastikan informasi pembayaran benar dan valid.</li>
+                        <li>Semua transaksi tunduk pada ketersediaan produk.</li>
+                    </ul>
+                </li>
+                <li><strong>Pengiriman dan Pengembalian</strong>
+                    <ul>
+                        <li>Kami berusaha memenuhi estimasi pengiriman, namun keterlambatan mungkin terjadi.</li>
+                        <li>Kebijakan pengembalian berlaku sesuai dengan aturan kami.</li>
+                    </ul>
+                </li>
+            </ol>
+        </div>
+
+        <div class="content-section">
+            <h2 class="text-center">Ringkasan Syarat</h2>
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>No</th>
+                        <th>Syarat</th>
+                        <th>Deskripsi</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>Penggunaan Situs</td>
+                        <td>Situs hanya digunakan untuk transaksi legal.</td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>Akun Pengguna</td>
+                        <td>Jaga kerahasiaan akun Anda.</td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>Pembayaran</td>
+                        <td>Informasi pembayaran harus valid.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 Toko Olahraga. Semua hak cipta dilindungi. <a href="#">Hubungi Kami</a></p>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
+
 </x-template>

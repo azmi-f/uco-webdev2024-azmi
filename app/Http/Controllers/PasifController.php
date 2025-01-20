@@ -15,4 +15,9 @@ class PasifController extends Controller
     {
         return view('pasif.term');
     }
+
+    function privacy ()
+    {
+        return view('pasif.privacy');
+    }
 }
