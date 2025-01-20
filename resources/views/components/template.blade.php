@@ -17,7 +17,7 @@
 </head>
 
 <body>
-    <nav class="navbar py-0 navbar-expand-lg d-block" style="background-color: var(--bs-body-bg);">
+    <nav class="navbar py-0 navbar-expand-lg d-block">
         <div class="d-flex container-fluid">
             <a class="navbar-brand" href="/">
                 <img src="{{ asset('img/logo.png') }}" style="height:50px">
