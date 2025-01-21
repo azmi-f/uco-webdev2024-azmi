@@ -30,7 +30,7 @@
                     @foreach ($favouriteItems as $favourite)
                         <tr>
                             <th>
-                                <form method="POST" action="{{ route('favourite.destroy', $favourite->id) }}">
+                                <form method="POST" action="{{ route('favourite.destroy', $favourite->product_id) }}">
                                     @csrf
                                     <button type="submit" class="btn btn-sm btn-danger">X</button>
                                 </form>

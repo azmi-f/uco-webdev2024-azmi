@@ -29,12 +29,6 @@
                     <li class="nav-item">
                         <a class="nav-link active fw-semibold" aria-current="page" href="{{ route('pasif.about') }}">About Us</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link fw-semibold" href="{{ route('pasif.term') }}">Term Condition</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link fw-semibold" href="{{ route('pasif.privacy') }}">Privacy & Policy</a>
-                    </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle fw-semibold" href="#" role="button" data-bs-toggle="dropdown"
                             aria-expanded="false">

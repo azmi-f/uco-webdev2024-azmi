@@ -16,7 +16,7 @@
                 padding: 0;
             }
             h1, h2 {
-                color: #007bff;
+                color: white;
                 font-weight: 600;
                 text-align: center;
             }

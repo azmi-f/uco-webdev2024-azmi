@@ -14,6 +14,37 @@
         crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(to right, #f9f9f9, #e9ecef);
+            color: #333;
+        }
+        .btn-white {
+            background-color: white;
+            border-radius: 20px;
+            transition: all 0.3s;
+        }
+
+        .btn-white:hover {
+            background-color: #f0f0f0;
+        }
+        footer {
+            background-color: #007bff;
+            color: black;
+            padding: 20px 0;
+        }
+
+        footer a {
+            color: black;
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+    </style>
 </head>
 
 <body>
@@ -114,7 +145,15 @@
             </ul>
         </div>
     </nav>
-    {{ $slot }}
+
+    <main class="container my-5">
+        {{ $slot }}
+    </main>
+
+    <footer class="text-center">
+        <p>&copy; 2025 Toko Olahraga. All rights reserved.</p>
+        <a href="{{ route('pasif.privacy') }}">Privacy Policy</a> | <a href="{{ route('pasif.term') }}">Terms of Service</a>
+    </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous">

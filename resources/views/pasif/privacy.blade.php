@@ -14,7 +14,7 @@
             color: #444;
         }
         h1 {
-            color: #007bff;
+            color: white;
             font-weight: 700;
             margin-bottom: 20px;
         }
